@@ -1,0 +1,131 @@
+/**
+N THEN TO EXPRESS APPLICATION SO THAT ALL WORK WELL**?
+
+INSTALL MYSQL
+
+Create folder MYSQL n open in VsCode
+on Terminal, npm init -y , to open package .json
+under Description:.... , type "type:"module"
+(for uding ES modules ...ECMAScript modules fro working with modulws 
+to write import/export stataements rather than using old common js modules.
+
+At terminal, install mysql library: npm i mysql2
+
+To create node application ,create 'database.js'to put all code that 
+connnects to mysql n queries the database.
+
+In database.js:
+import mysql from 'mysql2';
+//ask mysql to create a pool with host , user,password, database
+
+mysql.createPool({
+	host:'127.0.0.1',(instead of localhost)
+	user:'root',
+	password:'PFH$23bgrw9'
+	database: 'stud'
+	})
+n store in variable pool ...
+const pool = mysql.createPool({
+	host:'127.0.0.1',(instead of localhost)
+	user:'root',
+	password:'PFH$23bgrw9'
+	database: 'stud'
+	})
+Pool = collection of connection to database that can b reused instead of having a 
+connection for each query
+
+promise() will allow promise api version for each query
+
+At pool object call query methed n send plain query to sql n as its promise , lets use 'await'here....
+const result= await pool.query(SELECT * FROOM users) 
+console.log(result)
+
+
+Destructuring assignment is a JavaScript expression that allows you to unpack values from arrays 
+to separate variables3. This can be useful when you want to assign multiple values at once, or 
+access specific properties or elements from an array or object
+
+Prepared Statement
+INSERT QUERY:
+async function createNote(title,cmntent){
+const [result] = await pool.query(`	INSERT INTO users
+}
+TO INSTALL EXPRESS5:
+npm install "express@>=5.0.0-beta.1" --save
+
+
+INTEGRATING INTO EXPRESS APP:::::
+- first export all function
+- remove const statements
+- create app.js :::::to put express code to create http server
+- install express.js: $npm i "express@>=5.0.0-beta.1" --save 
+- import express from 'express'
+- write the error handling code : 
+	app.use((err, req, res, next) => {
+	console.error(err.stack)
+	res.status(500).send('Sopmething broke!')
+	})
+- In App.js:
+ import express from 'express'
+ import {getNote , getNotes, createNote}
+ 
+ const app = express()
+ 
+ /*app.get("/notes",(req,res) => {
+ 	res.send("these r notes")
+ 	})*/
+ app.get("/users",async(req,res) => {
+    	const note = await (getNote())
+ 	res.send(note)
+ 	})
+
+
+ app.use((err, req, res, next) => {
+	console.error(err.stack)
+	res.status(500).send('Sopmething broke!')
+	})
+	
+ app.listen(8080,() => {
+   console.log('Server is running on port 8080')
+   })
+   
+   Note: Thunder client window is a rest API Client Extension 
+   for vscode. Its a GUI based tool with simple n clean design that 
+   makes API testing easy with scriptless GUI-based testing.
+   
+   Next import getNote,getNotes,getCreate from database.js
+   make changes::::
+    app.get("/users",async(req,res) => {
+    	const note = await getNote()
+ 	res.send(note)
+ 	})
+ 	
+ 	app.get("/users/:id",async(req,res) => {
+ 	const id = req.params.id
+    	const note = await getNote(id)
+ 	res.send(note)
+ 	})
+
+	app.get("/users",async(req,res) => {
+ 	const id = req.params.id
+    	const note = await getNote(id)
+ 	res.send(note)
+ 	})
+ 	
+ 	app.post ('/users', async(req,res) => {
+ 	const(emailid,passwd,roleid) = req.body
+ 	const note = await createNotes(emailid,passwd,roleid)
+	res.status(201).send(note)
+	})
+	 include.....app.use(express.json())
+ 	
+  At prompt::: npm i -D nodemon
+  At package.json : uder "scripts":
+  	"dev":'npx nodemon app.js"
+  At terminal : npm run dev
+  For erroe message:
+  kill all running processes in background: pkill -f node
+   
+   
+CHK OUT:::::;;;	
+https://www.freecodecamp.org/news/http-request-methods-explained/

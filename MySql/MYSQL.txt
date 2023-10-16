@@ -1,0 +1,55 @@
+SQL Table Format
+Filed Name | Date Type | Key (Primary/Foreogn | Auto(Y/N) | Relation
+
+Table 1: USER
+UserId | Number |Primary Key |------| Self-Increment
+
+
+
+Commmands to create databases and table ::::
+Show all Databases: 	SHOW DATABASES;
+Create New Database : CREATE DATABASE <d/b name>
+Selec t /Use databse : 	USE <d/b name>
+Create Table : CREATE TABLE <table-name>(
+			id  INT NOT NULL PRIMARY KEY,
+			name VARCHAR(50) NOT NULL,
+			age INT);
+			
+To display table : SHOW TABLES;
+To get stucture of table : Describe <table-name>
+Delete Table :	DROP TABLE <table-name>
+Delate Datbase:	DROP DATABASE <database-name>
+
+go to Start > MySQL > MYSQKWorkbench > open caommand line cient> enter root password
+ to put when installing MYSQL.
+ 
+ At SQL prompt , to see datbases in current instance , cmd= SHOW DATABASES;
+ 
+To create database : CREATE DATABASE employee;
+				SHOW DATABASE;
+this creates employee container with compartments to store tables
+now u need to access the database with USE employee
+itll show 'database changed' ie u r in the employee database
+now create sections ie. tables by
+CRAETE TABLE perSonal-info(
+id INT NOT NULL PRIMARY KEY,
+name VARCHAR(50) NOT NULL,
+age INT);
+
+ull get message ..'Query OK'ie. table created successfully
+To knpw tables in 'employee' database: SHOW TABLES;
+
+For details of the table: DESCRIBE personal-info;
+
+To delete tables : DROP TABLE personal-info
+			   SHOW TABLES;
+			   itll show... empty set
+			   
+To drop the database : DROP DATABASE emplyee;
+				  SHOW DATABASES;
+no employee dtabase 
+
+
+
+			   
+ 
